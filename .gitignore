@@ -41,9 +41,9 @@ expo-env.d.ts
 # @end expo-cli
 
 # keys
-*constants/API_key.ts
-*constants/FirebaseConfig.ts
-*components/FirebaseClient.ts
-*components/FirebaseClient.js
-*constants/FirebaseConfig.js
+constants/API_key.ts
+constants/FirebaseConfig.ts
+components/FirebaseClient.ts
+components/FirebaseClient.js
+constants/FirebaseConfig.js
 ```
