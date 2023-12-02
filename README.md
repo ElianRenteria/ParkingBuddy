@@ -2,7 +2,8 @@
 CS490 Capstone Project:
 California State University San Marcos
 
-Project Description
+Project Description:
+
 CSUSM has multiple parking lots, however, during the rush hours, it is still very difficult for
 students to find a parking spot. Sometimes students may need to move across different parking
 lots in order to find one, which could cause significant delays. To help resolve this, this project
