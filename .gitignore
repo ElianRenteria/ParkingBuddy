@@ -47,3 +47,4 @@ constants/FirebaseConfig.ts
 components/FirebaseClient.ts
 components/FirebaseClient.js
 constants/FirebaseConfig.js
+constants/API_Key.ts
