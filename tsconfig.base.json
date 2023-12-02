@@ -1,14 +1,12 @@
 {
-  "compilerOptions": {
-    "target": "es5",
-    "module": "commonjs",
-    "strict": true
-  },
   "extends": "expo/tsconfig.base",
+  "compilerOptions": {
+    "strict": true,
+  },
   "include": [
     "**/*.ts",
     "**/*.tsx",
     ".expo/types/**/*.ts",
     "expo-env.d.ts"
-, "styles/Style.ts"  ]
+  ]
 }
