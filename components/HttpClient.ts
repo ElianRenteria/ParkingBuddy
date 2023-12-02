@@ -1,5 +1,7 @@
+import key from '../constants/API_Key';
+
 class ParkingService {
-  static baseURL: string = 'https://api.streetsoncloud.com/pl1';
+  static baseURL: string = key;
   static options: {
     method: string;
     headers: {
