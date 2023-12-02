@@ -1,5 +1,6 @@
-# CSUSM_PARKING_BUDDY
+# PARKING BUDDY
 CS490 Capstone Project:
+California State University San Marcos
 
 Project Description
 CSUSM has multiple parking lots, however, during the rush hours, it is still very difficult for
