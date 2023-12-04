@@ -30,21 +30,22 @@ class FirebaseClient {
         }
     }
 
-    async getDocument(collectionName: string, documentId: string): Promise<DocumentData | undefined> {
-        try {
-            const documentRef = doc(this.firestore, collectionName, documentId);
-            const documentSnapshot = await getDoc(documentRef);
-
-            if (documentSnapshot.exists()) {
-            return documentSnapshot.data();
-            } else {
-            console.error('Document does not exist');
-            return undefined;
-            }
-        } catch (error) {
-            console.error('Error while fetching document:', error);
-            throw error;
+    async getDocument(collectionName: string, documentId: string, fieldName?: string): Promise<any | undefined> {
+      try {
+        const documentRef = doc(this.firestore, collectionName, documentId);
+        const documentSnapshot = await getDoc(documentRef);
+  
+        if (documentSnapshot.exists()) {
+          const data = documentSnapshot.data();
+          return fieldName ? data?.[fieldName] : data;
+        } else {
+          console.error('Document does not exist');
+          return undefined;
         }
+      } catch (error) {
+        console.error('Error while fetching document:', error);
+        throw error;
+      }
     }
   
     async updateDocument(collectionName: string, documentId: string, newData: Partial<DocumentData>): Promise<void> {
@@ -111,26 +112,27 @@ class FirebaseClient {
 
 async function test() {
     // Test getting collection
-    const result = await firebaseClient.getCollection('Parking Structure');
+    const result = await firebaseClient.getCollection('Lots');
     console.log(result);
     // Test getting document
-    const result2 = await firebaseClient.getDocument('Parking Structure','Lot XYZ');
-    console.log(result2);
+    //const result2 = await firebaseClient.getDocument('Lots','E3C08CD0-C651-42BC-9731-BD04242093DF', 'sections');
+    //console.log(result2);
+    //console.log(result2[0]['shape'])
     // Test updating document
-    const result3 = await firebaseClient.updateDocument('Parking Structure','Lot XYZ',{available: 0});
+    //const result3 = await firebaseClient.updateDocument('Parking Structure','Lot XYZ',{available: 0});
     // Test adding a new document without specifying document ID (Firestore generates a unique ID)
-    await firebaseClient.addDocument('Parking Structure', { /* new document data */ });
+    //await firebaseClient.addDocument('Parking Structure', { /* new document data */ });
     // Test adding a new document with a specified document ID
-    await firebaseClient.addDocument('Parking Structure', { /* new document data */ }, 'customDocumentId');
+    //await firebaseClient.addDocument('Parking Structure', { /* new document data */ }, 'customDocumentId');
     // Test deleting a document
-    await firebaseClient.deleteDocument('Parking Structure', 'customDocumentId'); // Replace 'customDocumentId' with the actual document ID
+    //await firebaseClient.deleteDocument('Parking Structure', 'customDocumentId'); // Replace 'customDocumentId' with the actual document ID
     // Test searching for documents
-    const searchResult = await firebaseClient.searchDocument('users', 'DocumentId', '==', 'abc@gmail.com');
-    console.log('Search Result:', searchResult);
+    //const searchResult = await firebaseClient.searchDocument('users', 'DocumentId', '==', 'abc@gmail.com');
+    //console.log('Search Result:', searchResult);
 }
   
 const firebaseClient = new FirebaseClient();
 
-test();
-  
+//test();
+
 export default firebaseClient;

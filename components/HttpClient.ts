@@ -1,7 +1,7 @@
 import key from '../constants/API_Key';
 
 class ParkingService {
-  static baseURL: string = key;
+  static baseURL: string = 'https://api.streetsoncloud.com/pl1';
   static options: {
     method: string;
     headers: {
@@ -12,7 +12,7 @@ class ParkingService {
     method: 'GET',
     headers: {
       'Content-Type': 'application/json',
-      'X-API-Key': 'UZac6aeCFm2iL4e8JtoAT8mCPYYMzxiy2bpYDvym',
+      'X-API-Key': key,
     },
   };
 
@@ -27,7 +27,7 @@ class ParkingService {
   }
 }
 
-// ParkingService.getOverview();
+ParkingService.getOverview();
 
 export default ParkingService;
   

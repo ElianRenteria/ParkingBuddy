@@ -1,7 +1,9 @@
 import React from "react";
 import { View } from "react-native";
-import MapView, { Marker} from 'react-native-maps';
+import MapView, { Marker, Polygon} from 'react-native-maps';
 import styles from "../styles/Style";
+import firebaseClient from "./FirebaseClient";
+import PolygonComponent from "./PolygonComponent";
 
 export class MapRenderer {
 
@@ -45,21 +47,25 @@ export class MapRenderer {
         ],
     };
 
+
+
     static render = () => {
         return (
-                <MapView
-                    style={styles.map}
-                    initialRegion={MapRenderer.sanmarcos}
-                >
-                    {MapRenderer.csusmCoord.coordinates.map((marker, index) => (
-                        <Marker
-                            key={index}
-                            coordinate={{ latitude: marker.latitude, longitude: marker.longitude }}
-                            title={marker.name}
-                        />
-                    ))}
-                </MapView>
+          <MapView
+            style={styles.map}
+            initialRegion={MapRenderer.sanmarcos}
+          >
+            {MapRenderer.csusmCoord.coordinates.map((marker, index) => (
+              <Marker
+                key={index}
+                coordinate={{ latitude: marker.latitude, longitude: marker.longitude }}
+                title={marker.name}
+              />
+            ))}
+          </MapView>
         );
-    }
+      }
+      
+      
   
 }
