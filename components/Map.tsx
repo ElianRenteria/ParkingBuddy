@@ -62,6 +62,8 @@ export class MapRenderer {
                 title={marker.name}
               />
             ))}
+            <PolygonComponent lotId="B91010D3-9D3D-419F-9A1A-652B118D63F1"/>
+            <PolygonComponent lotId="E3C08CD0-C651-42BC-9731-BD04242093DF"/>
           </MapView>
         );
       }

@@ -38,17 +38,13 @@ const PolygonComponent: React.FC<PolygonComponentProps> = ({ lotId }) => {
   }, [lotId]);
 
   return (
-    <View style={styles.mapContainer}>
-      <MapView style={styles.map}>
-        {coordinates.map((polygonCoordinates, index) => (
-          <Polygon
-            key={index}
-            coordinates={polygonCoordinates}
-            fillColor="rgba(255, 0, 0, 0.5)"
-          />
-        ))}
-      </MapView>
-    </View>
+    coordinates.map((polygonCoordinates, index) => (
+      <Polygon
+        key={index}
+        coordinates={polygonCoordinates}
+        fillColor="rgba(40, 40, 255, 0.4)"
+      />
+    ))
   );
 };
 
