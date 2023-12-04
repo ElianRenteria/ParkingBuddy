@@ -1,14 +1,18 @@
 import styles from '../../styles/Style';
 import EditScreenInfo from '../../components/EditScreenInfo';
-import { Text, View } from '../../components/Themed';
+import { Button,Text} from 'react-native';
+import {View} from '../../components/Themed';
 import * as React from 'react';
+import { router } from 'expo-router';
 
 export default function preferences() {
+  const Logout = () => {
+    router.push('/');
+  }
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>Tab Two</Text>
       <View style={styles.separator} lightColor="#eee" darkColor="rgba(255,255,255,0.1)" />
-      <EditScreenInfo path="app/(tabs)/preferences.tsx" />
+      <Button title='Logout' onPress={Logout}/>
     </View>
   );
 }
