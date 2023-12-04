@@ -22,3 +22,5 @@ function generateUUID() {
 
     return uuid;
 }
+
+export default generateUUID;

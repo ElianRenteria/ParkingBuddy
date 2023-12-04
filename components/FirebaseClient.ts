@@ -39,7 +39,7 @@ class FirebaseClient {
           const data = documentSnapshot.data();
           return fieldName ? data?.[fieldName] : data;
         } else {
-          console.error('Document does not exist');
+          //console.error('Document does not exist');
           return undefined;
         }
       } catch (error) {
@@ -107,16 +107,40 @@ class FirebaseClient {
           throw error;
         }
     }
+
+    async checkUserExists(username: string): Promise<boolean> {
+      try {
+        const userExists:any = await firebaseClient.getDocument('Users',username)
+        if (userExists == undefined) {
+          return false
+        }
+        return true
+      } catch (error) {
+        return false
+      }
+    }
+
+    async addUser(username: string, password: string): Promise<void> {
+      try{
+        await this.addDocument('Users', {password: password, lot : "", section : "" },username);
+        console.log('User added successfully');
+    } catch (error) {
+      console.error('Error while adding user:', error);
+      throw error;
+    }
+    
+    }
+
     
 }
 
 async function test() {
     // Test getting collection
-    const result = await firebaseClient.getCollection('Lots');
-    console.log(result);
+    //const result = await firebaseClient.getCollection('Lots');
+    //console.log(result);
     // Test getting document
-    //const result2 = await firebaseClient.getDocument('Lots','E3C08CD0-C651-42BC-9731-BD04242093DF', 'sections');
-    //console.log(result2);
+    const result2 = await firebaseClient.getDocument('Users','email');
+    console.log(result2);
     //console.log(result2[0]['shape'])
     // Test updating document
     //const result3 = await firebaseClient.updateDocument('Parking Structure','Lot XYZ',{available: 0});
