@@ -9,6 +9,7 @@ interface PolygonComponentProps {
 
 const PolygonComponent: React.FC<PolygonComponentProps> = ({ lotId }) => {
   const [coordinates, setCoordinates] = useState<LatLng[][]>([]);
+  const [sectionColors, setSectionColors] = useState<string[]>([]);
 
   useEffect(() => {
     const fetchCoordinates = async () => {
@@ -24,8 +25,28 @@ const PolygonComponent: React.FC<PolygonComponentProps> = ({ lotId }) => {
             }));
             return itemCoordinates;
           });
-
           setCoordinates(parsedCoordinatesArray);
+
+          const sectionColors = data.map((item: any) => {
+            if(item['totalSpots'] == 0){
+              return "rgba(0, 0, 0, 0.4)";
+            }
+            else{
+              if(item['reportedParked']/item['totalSpots'] > 0.75){
+                return "rgba(255, 0, 0, 0.35)";
+              }
+              else if(item['reportedParked']/item['totalSpots'] > 0.50){
+                return "rgba(255, 165, 0, 0.35)";
+              }
+              else if(item['reportedParked']/item['totalSpots'] > 0.25){
+                return "rgba(255, 255, 0, 0.35)";
+              }
+              else{
+                return "rgba(0, 255, 0, 0.35)";
+              }
+            }
+          });
+          setSectionColors(sectionColors);
         } else {
           console.error('Error fetching coordinates: No documents found for lotId:', lotId);
         }
@@ -42,7 +63,7 @@ const PolygonComponent: React.FC<PolygonComponentProps> = ({ lotId }) => {
       <Polygon
         key={index}
         coordinates={polygonCoordinates}
-        fillColor="rgba(40, 40, 255, 0.4)"
+        fillColor={sectionColors[index]}
       />
     ))
   );

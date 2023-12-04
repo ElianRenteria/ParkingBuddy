@@ -64,6 +64,16 @@ export class MapRenderer {
             ))}
             <PolygonComponent lotId="B91010D3-9D3D-419F-9A1A-652B118D63F1"/>
             <PolygonComponent lotId="E3C08CD0-C651-42BC-9731-BD04242093DF"/>
+            <PolygonComponent lotId="9F5C7E67-509B-484C-AFB3-7FA3D61DE19D"/>
+            <PolygonComponent lotId="379A067A-BD85-467E-B6EE-DC53A8952F6D"/>
+            <PolygonComponent lotId="33433EE5-4A0A-43B9-BD75-D94C20202343"/>
+            <PolygonComponent lotId="0437D8E8-9962-4463-BD24-1DEB6A692BE8"/>
+            <PolygonComponent lotId="E2BADC27-8EC4-48ED-8EF4-7A8B6D93E3FC"/>
+            <PolygonComponent lotId="A1EA4486-BA97-4A22-9ABD-06FED3A86D7F"/>
+            <PolygonComponent lotId="FB30B729-D1D8-4D8F-8A1C-923BD2631D46"/>
+
+
+
           </MapView>
         );
       }
