@@ -27,7 +27,7 @@ class ParkingService {
   }
 }
 
-ParkingService.getOverview();
+//ParkingService.getOverview();
 
 export default ParkingService;
   
