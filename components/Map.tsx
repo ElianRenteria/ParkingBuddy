@@ -4,6 +4,7 @@ import MapView, { Marker, Polygon} from 'react-native-maps';
 import styles from "../styles/Style";
 import firebaseClient from "./FirebaseClient";
 import PolygonComponent from "./PolygonComponent";
+import CarouselComponent from "./CarouselComponent";
 
 export class MapRenderer {
 
@@ -75,6 +76,8 @@ export class MapRenderer {
 
             
           </MapView>
+
+
         );
       }
       
