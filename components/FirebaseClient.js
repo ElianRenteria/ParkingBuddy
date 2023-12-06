@@ -85,7 +85,7 @@ var FirebaseClient = /** @class */ (function () {
                             return [2 /*return*/, fieldName ? data === null || data === void 0 ? void 0 : data[fieldName] : data];
                         }
                         else {
-                            console.error('Document does not exist');
+                            //console.error('Document does not exist');
                             return [2 /*return*/, undefined];
                         }
                         return [3 /*break*/, 3];
@@ -198,6 +198,49 @@ var FirebaseClient = /** @class */ (function () {
             });
         });
     };
+    FirebaseClient.prototype.checkUserExists = function (username) {
+        return __awaiter(this, void 0, void 0, function () {
+            var userExists, error_7;
+            return __generator(this, function (_a) {
+                switch (_a.label) {
+                    case 0:
+                        _a.trys.push([0, 2, , 3]);
+                        return [4 /*yield*/, firebaseClient.getDocument('Users', username)];
+                    case 1:
+                        userExists = _a.sent();
+                        if (userExists == undefined) {
+                            return [2 /*return*/, false];
+                        }
+                        return [2 /*return*/, true];
+                    case 2:
+                        error_7 = _a.sent();
+                        return [2 /*return*/, false];
+                    case 3: return [2 /*return*/];
+                }
+            });
+        });
+    };
+    FirebaseClient.prototype.addUser = function (username, password) {
+        return __awaiter(this, void 0, void 0, function () {
+            var error_8;
+            return __generator(this, function (_a) {
+                switch (_a.label) {
+                    case 0:
+                        _a.trys.push([0, 2, , 3]);
+                        return [4 /*yield*/, this.addDocument('Users', { password: password, lot: "", section: "" }, username)];
+                    case 1:
+                        _a.sent();
+                        console.log('User added successfully');
+                        return [3 /*break*/, 3];
+                    case 2:
+                        error_8 = _a.sent();
+                        console.error('Error while adding user:', error_8);
+                        throw error_8;
+                    case 3: return [2 /*return*/];
+                }
+            });
+        });
+    };
     return FirebaseClient;
 }());
 function test() {
@@ -215,5 +258,5 @@ function test() {
     });
 }
 var firebaseClient = new FirebaseClient();
-test();
+//test();
 exports.default = firebaseClient;

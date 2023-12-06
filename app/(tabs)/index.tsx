@@ -7,17 +7,17 @@ import CarouselComponent from '../../components/CarouselComponent'; // Import th
 import CarouselStyles from '../../styles/CarouselStyles';
 
 const carouselData = [
-  { id: 1, content: 'Lot B' },
-  { id: 2, content: 'Lot C' },
-  { id: 3, content: 'PS1' },
-  { id: 4, content: 'PS2' },
-  { id: 5, content: 'Lot XYZ' },
-  { id: 6, content: 'Lot N' },
-  { id: 7, content: 'Lot F' },
-  { id: 8, content: 'Lot J' },
-  { id: 9, content: 'Lot K' },
-  { id: 10, content: 'Lot O' },
-  { id: 11, content: 'Lot L' },
+  { id: 1, content: 'Lot B', motorcycles: 'NA', disabledSpaces: 'NA', faculty: 'NA', PayStation: 'yes' },
+  { id: 2, content: 'Lot C',motorcycles: '12', disabledSpaces: '10', faculty: '10', PayStation: 'true' },
+  { id: 3, content: 'PS1',motorcycles: '', disabledSpaces: '', faculty: '29', PayStation: 'true' },
+  { id: 4, content: 'PS2',motorcycles: '', disabledSpaces: '', faculty: '', PayStation: '' },
+  { id: 5, content: 'Lot XYZ',motorcycles: '', disabledSpaces: '', faculty: '', PayStation: '' },
+  { id: 6, content: 'Lot N',motorcycles: '', disabledSpaces: '', faculty: '', PayStation: '' },
+  { id: 7, content: 'Lot F',motorcycles: '', disabledSpaces: '', faculty: '', PayStation: '' },
+  { id: 8, content: 'Lot J',motorcycles: '', disabledSpaces: '', faculty: '', PayStation: '' },
+  { id: 9, content: 'Lot K',motorcycles: '', disabledSpaces: '', faculty: '', PayStation: '' },
+  { id: 10, content: 'Lot O',motorcycles: '', disabledSpaces: '', faculty: '', PayStation: '' },
+  { id: 11, content: 'Lot L',motorcycles: '', disabledSpaces: '', faculty: '', PayStation: '' },
 ];
 
 export default function TabOneScreen() {
@@ -27,7 +27,7 @@ export default function TabOneScreen() {
     // Set up an interval to recreate MapRenderer every 5 seconds
     const intervalId = setInterval(() => {
       setRefreshKey((prevKey) => prevKey + 1);
-    }, 5000); // Reduced interval for testing
+    }, 180000); // Reduced interval for testing
 
     // Clean up the interval when the component unmounts
     return () => clearInterval(intervalId);

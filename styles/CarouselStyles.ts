@@ -1,6 +1,8 @@
 import { StyleSheet } from 'react-native';
+import { useColorScheme } from 'react-native';
 
 
+const colorScheme = useColorScheme();
 const CarouselStyles = StyleSheet.create({
     container: {
       ...StyleSheet.absoluteFillObject,
@@ -20,7 +22,7 @@ const CarouselStyles = StyleSheet.create({
       flexDirection: 'column',
       justifyContent: 'space-between',
       alignContent: 'center',
-      backgroundColor: 'white',
+      backgroundColor: colorScheme === 'dark' ? 'rgba(40, 40, 40, 0.75)' : 'rgba(255, 255, 255, 0.75)',
       height: 200,
       width: 370,
       padding: 24,
@@ -46,7 +48,7 @@ const CarouselStyles = StyleSheet.create({
       borderBottomRightRadius: 24,
     },
     cardTitle: {
-      color: 'black',
+      color: 'dark' ? 'white' : 'rgba(40,40,40)',
       fontSize: 22,
       alignSelf: 'center'
     },
@@ -57,7 +59,7 @@ const CarouselStyles = StyleSheet.create({
       shadowRadius: 3,
     },
     heading:{
-      color: 'black',
+      color: 'dark' ? 'white' : 'rgba(40,40,40)',
       position: 'absolute',
       fontWeight: 'bold',
       top: '83.5%', // Position the heading at the vertical center of the cardContainer
@@ -85,7 +87,7 @@ const CarouselStyles = StyleSheet.create({
       backgroundColor: 'white',
     },
     cardText: {
-      color: 'black',
+      color: 'dark' ? 'white' : 'rgba(40,40,40)',
       fontSize: 16,
     },
     freeSpacesValue: {
@@ -96,8 +98,8 @@ const CarouselStyles = StyleSheet.create({
       height: 500, // You can adjust the height as needed
     },
     inputBox: {
-      color: 'white',
-      backgroundColor: 'white',
+      color: 'dark' ? 'white' : 'rgba(40,40,40)',
+      backgroundColor: 'dark' ? 'white' : 'rgba(40,40,40)',
     },
     modalContainer: {
       flex: 1,
@@ -111,13 +113,13 @@ const CarouselStyles = StyleSheet.create({
       marginBottom: 10,
     },
     infoText:{
-      color: 'gray',
+      color: 'dark' ? 'white' : 'rgba(120,120,120)',
       position: 'relative',
       fontSize: 12,
       marginBottom: 5,
     },
      subHeading:{
-      color: 'black',
+      color: 'dark' ? 'white' : 'rgba(40,40,40)',
       position: 'relative',
       fontWeight: 'bold',
       fontSize: 18,
