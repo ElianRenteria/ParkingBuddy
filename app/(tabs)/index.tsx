@@ -3,9 +3,13 @@ import { View } from '../../components/Themed';
 import { useFocusEffect } from '@react-navigation/native'; 
 import {MapRenderer} from '../../components/Map'; // Import the MapRenderer component
 import styles from '../../styles/Style';
+import CarouselComponent from '../../components/CarouselComponent';
+
 
 export default function TabOneScreen() {
   const [refreshKey, setRefreshKey] = useState(0);
+
+
 
   useEffect(() => {
     // Set up an interval to recreate MapRenderer every 5 seconds
@@ -21,6 +25,7 @@ export default function TabOneScreen() {
     <View key={refreshKey} style={styles.mapContainer}>
       {MapRenderer.render()}
     </View>
+
   );
 }
 

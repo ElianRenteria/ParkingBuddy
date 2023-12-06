@@ -73,7 +73,7 @@ export class MapRenderer {
             <PolygonComponent lotId="FB30B729-D1D8-4D8F-8A1C-923BD2631D46"/>
 
 
-
+            
           </MapView>
         );
       }
