@@ -1,9 +1,15 @@
 import { StyleSheet } from 'react-native';
+import { useColorScheme } from 'react-native';
+
+const colorScheme = useColorScheme();
+
+
 const styles = StyleSheet.create({
   container: {
     flex: 1,
     alignItems: 'center',
     justifyContent: 'center',
+    backgroundColor: colorScheme === 'dark' ? '#282828' : 'white'
   },
   mapContainer: {
     width: '100%',

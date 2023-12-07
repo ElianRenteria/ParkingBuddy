@@ -2,7 +2,10 @@ import React, { FC } from 'react';
 import { View, Text, FlatList, StyleSheet, TouchableOpacity } from 'react-native';
 import { Icon } from 'react-native-elements';
 import Modal from 'react-native-modal';
+import { useColorScheme } from 'react-native';
 
+
+const colorScheme = useColorScheme();
 interface Notification {
     id: number;
     title: string;
@@ -63,6 +66,7 @@ const styles = StyleSheet.create({
         fontWeight: 'bold',
         fontSize: 22,
         marginLeft: 10, // Adjust this value as needed for your layout
+        color: colorScheme === 'dark' ? 'white':'#282828' 
     },
     modal: {
         margin: 0, // This will stretch the modal to the entire screen width
@@ -71,7 +75,7 @@ const styles = StyleSheet.create({
     },
     container: {
         flex: 1, // This will stretch the container to the entire height of the modal
-        backgroundColor: 'white',
+        backgroundColor: colorScheme === 'dark' ? '#282828' : 'white',
         paddingTop: 50,
         paddingBottom: 20,
         paddingHorizontal: 10,
@@ -87,6 +91,7 @@ const styles = StyleSheet.create({
     },
     title: {
         fontWeight: 'bold',
+        color: colorScheme === 'dark' ? 'white':'#282828' 
     },
 });
 

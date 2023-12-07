@@ -3,6 +3,10 @@ import loginStyles from '../styles/loginStyle';
 import React, { useState } from 'react';
 import { router } from 'expo-router';
 import firebaseClient from '../components/FirebaseClient';
+import { useColorScheme } from 'react-native';
+
+
+const colorScheme = useColorScheme();
 
 
 
@@ -42,7 +46,9 @@ const signUp = () => {
                 onChangeText={setPass}
                 secureTextEntry
             />
-            <Button title="SignUp" onPress={handleSignUp} />
+            <View style={loginStyles.signUp2Container}>
+              <Button title="Create Account" onPress={handleSignUp} color = {colorScheme === 'dark' ? 'white' : 'rgba(40,40,40)'}/>
+            </View>
         </View>
     )
 }

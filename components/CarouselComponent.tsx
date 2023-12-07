@@ -8,6 +8,11 @@ import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import { Divider } from '@rneui/themed';
 import c from './getReportedParked';
 import firebaseClient from './FirebaseClient';
+import { useColorScheme } from 'react-native';
+
+
+
+const colorScheme = useColorScheme();
 
 interface CarouselComponentProps {
   data: { id: number; content: string; motorcycles: string; disabledSpaces: string; faculty: string; PayStation: string }[];
@@ -138,11 +143,11 @@ const CarouselComponent: React.FC<CarouselComponentProps> = ({ data }) => {
         {/* Expand Button */}
         <TouchableOpacity onPress={handlePress}>
           {/* If card is expanded, use chevron down, else do chevron up*/}
-          <Icon name={isCardExpanded ? 'chevron-down' : 'chevron-up'} size={24} />
+          <Icon name={isCardExpanded ? 'chevron-down' : 'chevron-up'} size={24} color={colorScheme === 'dark' ? 'white':'#282828' } />
         </TouchableOpacity>
       </View>
 
-      <Divider style={styles.dividerLine} inset={true} insetType="right" />
+      <Divider style={styles.dividerLine} inset={true} insetType="middle" />
 
       {/*When the card is expanded, add more info under free spaces*/}
       {isCardExpanded && (
@@ -178,7 +183,7 @@ const CarouselComponent: React.FC<CarouselComponentProps> = ({ data }) => {
           }}
           disabled={parkedButtonPressed && selectedCard !== item.content} //Disable all buttons except for the "parked" one
         >
-          <Text style={styles.cardText}>{selectedCard === item.content ? 'Leave' : 'Park'}</Text>
+          <Text style={styles.parkButton}>{selectedCard === item.content ? 'Leave' : 'Park'}</Text>
         </TouchableOpacity>
     </View>
   );

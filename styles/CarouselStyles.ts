@@ -90,6 +90,10 @@ const CarouselStyles = StyleSheet.create({
       color: 'dark' ? 'white' : 'rgba(40,40,40)',
       fontSize: 16,
     },
+    parkButton:{
+      color: 'rgb(40,40,40)',
+      fontSize: 18,
+    },
     freeSpacesValue: {
       color: '#90EE90',
       fontSize: 16,

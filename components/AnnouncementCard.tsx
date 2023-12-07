@@ -25,7 +25,7 @@ interface AnnouncementCardProps {
     return (
       <View>
         <TouchableOpacity style={styles.deleteButton} onPress={() => onDelete(id)}>
-          <Icon name="x" type="feather" color="#fff" />
+          <Icon name="x" type="feather" color={colorScheme === 'dark' ? '#282828':'white'}/>
         </TouchableOpacity>
         <View style={styles.cardContainer}>
           <View style={styles.textContainer}>

@@ -4,6 +4,7 @@ import { Button,Text} from 'react-native';
 import {View} from '../../components/Themed';
 import * as React from 'react';
 import { router } from 'expo-router';
+import { color } from 'react-native-elements/dist/helpers';
 
 export default function preferences() {
   const Logout = () => {

@@ -1,9 +1,12 @@
 import React, { useState } from 'react';
-import { View, Text, TextInput, Button } from 'react-native';
+import { View, Text, TextInput, Button, TouchableOpacity} from 'react-native';
 import loginStyles from '../styles/loginStyle';
 import firebaseClient from '../components/FirebaseClient';
 import { getUrlWithReactNavigationConcessions } from 'expo-router/build/fork/getStateFromPath';
 import { router } from 'expo-router';
+import { useColorScheme, Image} from 'react-native';
+
+const colorScheme = useColorScheme();
 
 type LoginScreenProps = {
   onLogin: (username: string, password: string) => {
@@ -42,7 +45,10 @@ const LoginScreen: React.FC<LoginScreenProps> = ({ onLogin }) => {
 
   return (
     <View style={loginStyles.container}>
-      <Text style={loginStyles.title}>ParkingBuddy</Text>
+      <Image
+        source={require('../styles/assets/logo.png')} // Replace with the path to your image
+        style={loginStyles.logo}
+      />
       <TextInput
         style={loginStyles.input}
         placeholder="Username"
@@ -56,8 +62,12 @@ const LoginScreen: React.FC<LoginScreenProps> = ({ onLogin }) => {
         onChangeText={setPassword}
         secureTextEntry
       />
-      <Button title="Login" onPress={handleLogin} />
-      <Button title="Sign Up" onPress={() => router.push('/signUp')} />
+      <View style={loginStyles.signUpContainer}>
+        <Button title='Login' onPress={handleLogin} color={colorScheme === 'dark' ? 'white' : 'rgb(40,40,40)'}/>
+      </View>
+      <View style={loginStyles.signUpContainer}>
+        <Button color={colorScheme === 'dark' ? 'white' : 'rgb(40,40,40)'} title="Sign Up" onPress={() => router.push('/SignUp')} />
+      </View>
     </View>
   );
 };
