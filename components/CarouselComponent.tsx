@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { View, Text, Dimensions, TouchableOpacity } from 'react-native';
+import { View, Text, Dimensions, TouchableOpacity, Alert } from 'react-native';
 import Carousel from 'react-native-snap-carousel';
 import CarouselStyles from '../styles/CarouselStyles';
 import styles from '../styles/CarouselStyles';
@@ -23,9 +23,68 @@ const CarouselComponent: React.FC<CarouselComponentProps> = ({ data }) => {
 
   const [parkingData, setParkingData] = useState<Record<string, number>>({});
 
-  const handlePress = () => {
+  const handlePress = () =>{
     setIsCardExpanded(!isCardExpanded);
+  }
+   //Alert function that passes data to update the database when user wants to park
+   const leaveAlert = (item: any) => {
+    Alert.alert(
+      'Are you sure you want to leave?',
+      '',
+      [
+        {
+          text: 'No',
+          style: 'cancel',
+          onPress: () => {
+            console.log("Didn't leave");
+            setParkedButtonPressed(true);
+
+  
+          },
+        },
+        {
+          text: 'Yes',
+          onPress: () => {
+            console.log("Left parking space");
+
+            setParkedButtonPressed(false); //Set that no button has been pressed i.e. user left parking lot
+            setSelectedCard(null); //Reset the selected Card so that the user could select another one
+  
+          },
+        },
+      ],
+      { cancelable: false }
+    );
   };
+  
+   //Alert function that passes data to update the database when user wants to park
+   const parkAlert = (item: any) => {
+    Alert.alert(
+      'Are you sure you want to park here?',
+      '',
+      [
+        {
+          text: 'No',
+          style: 'cancel',
+          onPress: () => {
+            console.log("Didn't park");
+            setParkedButtonPressed(false); 
+  
+          },
+        },
+        {
+          text: 'Yes',
+          onPress: () => {
+            console.log("Parked");
+            setParkedButtonPressed(true); //Set that a button has been pressed i.e. user has parked
+            setSelectedCard(item.content); //Set selectedCard to the one where the user is parking
+          },
+        },
+      ],
+      { cancelable: false }
+    );
+  };
+  
 
   useEffect(() => {
     const fetchParkingData = async () => {
@@ -110,13 +169,11 @@ const CarouselComponent: React.FC<CarouselComponentProps> = ({ data }) => {
           onPress={() => {
             if (selectedCard === item.content) {
               //If the button on the parked card is pressed again
-              setParkedButtonPressed(false); //Set that no button has been pressed i.e. user left parking lot
-              //leaveAlert(item);
+              leaveAlert(item);
+              console.log("Unparking");
             } else {
               //When a button is pressed for the first time
-              //parkAlert(item);
-              setParkedButtonPressed(true); //Set that a button has been pressed i.e. user has parked
-              setSelectedCard(item.content); //Set selectedCard to the one where the user is parking
+              parkAlert(item);
             }
           }}
           disabled={parkedButtonPressed && selectedCard !== item.content} //Disable all buttons except for the "parked" one
